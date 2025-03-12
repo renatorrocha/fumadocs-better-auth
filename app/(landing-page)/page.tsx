@@ -1,32 +1,66 @@
+"use client";
+
 import Image from "next/image";
-import FindeslabLogo from "@/assets/Findeslab-picture.jpeg";
+import SideImage from "@/assets/side-image.png";
+import { signIn } from "@/lib/auth-client";
+import { PiMicrosoftOutlookLogoFill } from "react-icons/pi";
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen flex flex-col md:flex-row">
-      <div className="w-full md:w-[70%] relative min-h-[300px] md:min-h-screen">
+    <main className="min-h-screen flex flex-col md:flex-row bg-background">
+      {/* Image Section */}
+      <div className="w-full md:w-[60%] relative min-h-[400px] md:min-h-screen">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
         <Image
-          src={FindeslabLogo}
+          src={SideImage}
           alt="Login cover image"
           fill
           priority
           className="object-cover"
         />
+        <div className="absolute bottom-8 left-8 z-20 text-white max-w-lg">
+          <h2 className="text-3xl font-bold mb-3">
+            Documentação super protegida
+          </h2>
+          <p className="text-sm text-gray-200">
+            Se autentifique com o better-auth e proteja sua documentação (feita
+            com fumadocs).
+          </p>
+        </div>
       </div>
 
-      <div className="w-full md:w-[30%] p-8 flex items-center justify-center">
-        <div className="w-full max-w-md space-y-6">
-          <div className="space-y-4 text-center">
-            <div>
-              <h1 className="text-3xl font-bold">Bem vindo de volta!</h1>
-              <p className="text-muted-foreground">
-                Entre com suas credenciais para acessar sua conta
-              </p>
-            </div>
+      {/* Login Section */}
+      <div className="w-full md:w-[40%] p-8 lg:p-12 flex items-center justify-center bg-card">
+        <div className="w-full max-w-md space-y-8">
+          <div className="space-y-2">
+            <h1 className="text-4xl font-bold tracking-tight text-foreground">
+              Bem vindo de volta!
+            </h1>
+            <p className="text-muted-foreground">
+              Entre com suas credenciais para acessar sua conta
+            </p>
+          </div>
 
-            <button className="px-4 py-2 border border-gray-300 rounded-md">
+          <div className="pt-4">
+            <button
+              onClick={() => {
+                signIn.social({
+                  provider: "microsoft",
+                  callbackURL: "/auth",
+                });
+              }}
+              className="w-full flex items-center justify-center gap-3 px-6 py-3 text-sm font-medium text-white bg-[#2F2F2F] hover:bg-[#404040] rounded-lg transition-colors duration-200 shadow-sm"
+            >
+              <PiMicrosoftOutlookLogoFill className="h-5 w-5" />
               Entrar com Microsoft
             </button>
+          </div>
+
+          <div className="mt-8 text-center text-sm text-muted-foreground">
+            <p>
+              Ao continuar, você concorda com nossos Lorem ipsum dolor, sit amet
+              consectetur adipisicing elit. .
+            </p>
           </div>
         </div>
       </div>
