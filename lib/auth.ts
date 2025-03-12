@@ -14,8 +14,6 @@ export const auth = betterAuth({
     microsoft: {
       clientId: process.env.MICROSOFT_CLIENT_ID!,
       clientSecret: process.env.MICROSOFT_CLIENT_SECRET!,
-      tenantId: "common",
-      requireSelectAccount: true,
     },
     github: {
       clientId: process.env.GITHUB_CLIENT_ID!,
