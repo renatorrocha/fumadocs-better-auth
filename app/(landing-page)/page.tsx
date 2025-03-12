@@ -3,7 +3,7 @@
 import Image from "next/image";
 import SideImage from "@/assets/side-image.png";
 import { signIn } from "@/lib/auth-client";
-import { PiMicrosoftOutlookLogoFill } from "react-icons/pi";
+import { PiGithubLogoFill, PiMicrosoftOutlookLogoFill } from "react-icons/pi";
 
 export default function LoginPage() {
   return (
@@ -41,7 +41,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-4 space-y-2">
             <button
               onClick={() => {
                 signIn.social({
@@ -49,10 +49,23 @@ export default function LoginPage() {
                   callbackURL: "/auth",
                 });
               }}
-              className="w-full flex items-center justify-center gap-3 px-6 py-3 text-sm font-medium text-white bg-[#2F2F2F] hover:bg-[#404040] rounded-lg transition-colors duration-200 shadow-sm"
+              className="w-full cursor-pointer flex items-center justify-center gap-3 px-6 py-3 text-sm font-medium text-white bg-[#2F2F2F] hover:bg-[#404040] rounded-lg transition-colors duration-200 shadow-sm"
             >
               <PiMicrosoftOutlookLogoFill className="h-5 w-5" />
               Entrar com Microsoft
+            </button>
+
+            <button
+              onClick={() => {
+                signIn.social({
+                  provider: "github",
+                  callbackURL: "/auth",
+                });
+              }}
+              className="w-full cursor-pointer flex items-center justify-center gap-3 px-6 py-3 text-sm font-medium text-white bg-[#2F2F2F] hover:bg-[#404040] rounded-lg transition-colors duration-200 shadow-sm"
+            >
+              <PiGithubLogoFill className="h-5 w-5" />
+              Entrar com Github
             </button>
           </div>
 
