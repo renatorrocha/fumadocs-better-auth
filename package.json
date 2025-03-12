@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
-    "postinstall": "fumadocs-mdx && pnpm run prisma generate"
+    "postinstall": "fumadocs-mdx && prisma generate",
+    "prisma": "prisma"
   },
   "dependencies": {
     "@azure/msal-react": "^3.0.6",
